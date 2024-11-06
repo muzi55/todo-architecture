@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { ITodoProps } from "../libs/type";
+import { TodoController } from "../libs/TodoController";
 
 function TodoSearch({ todo }: ITodoProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -10,7 +11,8 @@ function TodoSearch({ todo }: ITodoProps) {
 
     const keyword = inputRef.current?.value || "";
 
-    setSearchResults(keyword ? todo.filter((el) => el.title.includes(keyword) || el.content.includes(keyword)) : []);
+    const nextTodo = TodoController(todo).search(keyword).get();
+    setSearchResults(nextTodo);
   };
 
   return (

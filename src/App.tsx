@@ -1,14 +1,14 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import Todo from "./components/Todo";
+import TodoForm from "./components/TodoForm";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <h1>투두앱</h1>
+
+      <TodoForm />
+      <Todo />
     </>
   );
 }

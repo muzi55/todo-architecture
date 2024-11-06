@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ITodo } from "../libs/type";
+import { TodoController } from "../libs/TodoController";
 
 interface ITodoForm {
   todo: ITodo[];
@@ -22,16 +23,14 @@ function TodoForm({ todo, setTodo }: ITodoForm) {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addState();
-    resetState();
-  };
-
-  const addState = () => {
     const newTodo: ITodo = {
       id: new Date(),
       ...todoForm,
     };
-    setTodo([...todo, newTodo]);
+
+    const nextTodo: ITodo[] = TodoController(todo).add(newTodo).get();
+    setTodo(nextTodo);
+    resetState();
   };
 
   const resetState = () => {
@@ -46,11 +45,14 @@ function TodoForm({ todo, setTodo }: ITodoForm) {
       resetState();
     };
   }, []);
+
   return (
     <form onSubmit={onSubmit}>
       <input type="text" name="title" value={todoForm.title} onChange={handleChange} />
       <input type="text" name="content" value={todoForm.content} onChange={handleChange} />
-      <button type="submit">추가</button>
+      <button type="submit" disabled={todoForm.content === "" || todoForm.title === ""}>
+        추가
+      </button>
     </form>
   );
 }

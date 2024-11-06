@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ITodo } from "../libs/type";
+import { ITodo, ITodoProps } from "../libs/type";
 import { TodoController } from "../libs/TodoController";
 
-interface ITodoForm {
-  todo: ITodo[];
-  setTodo: React.Dispatch<React.SetStateAction<ITodo[]>>;
-}
-
-function TodoForm({ todo, setTodo }: ITodoForm) {
+function TodoForm({ todo, setTodo }: ITodoProps) {
   const [todoForm, setTodoForm] = useState({
     title: "",
     content: "",

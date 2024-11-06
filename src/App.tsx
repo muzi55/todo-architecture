@@ -10,7 +10,7 @@ function App() {
       <h1>투두앱</h1>
 
       <TodoForm todo={todo} setTodo={setTodo} />
-      <Todo />
+      <Todo todo={todo} setTodo={setTodo} />
     </>
   );
 }

@@ -18,3 +18,13 @@ npm install
   <br />
 
 - **테스트 용이성**: 각 **모듈을 독립적으로 테스트** 할 수 있으며, Controller는 **Ui와 관련된 부분을 신경쓸 필요가 없으며**, 오직 Js코드이기 때문에 따로 React전용 테스트 라이브러리가 필요하지 않다.
+
+```typescript
+// TodoController.ts
+
+- `add(todo: ITodo)`: 새로운 투두 항목을 추가합니다.
+- `delete(id: Date)`: 특정 ID를 가진 투두 항목을 삭제합니다.
+- `search(keyword: string)`: 제목이나 내용에 키워드가 포함된 투두 항목을 검색합니다.
+- `sort(order: SortOrder)`: 투두 항목을 정렬합니다. `order`는 "newest" 또는 "oldest"일 수 있습니다.
+- `get()`: 현재 투두 리스트를 반환합니다.
+```

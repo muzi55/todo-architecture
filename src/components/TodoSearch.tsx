@@ -8,7 +8,6 @@ function TodoSearch({ todo }: ITodoProps) {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const keyword = inputRef.current?.value || "";
 
     const nextTodo = TodoController(todo).search(keyword).get();
@@ -18,17 +17,21 @@ function TodoSearch({ todo }: ITodoProps) {
   return (
     <div>
       <h2>투두 검색</h2>
-
       <form onSubmit={onSubmit}>
         <input ref={inputRef} type="text" />
         <button>검색</button>
       </form>
 
-      <ul>
-        {searchResults.map((el) => (
-          <li key={el.id}>{el.title}</li>
-        ))}
-      </ul>
+      <br />
+      <br />
+      <div>
+        <h3>검색 목록</h3>
+        <ul>
+          {searchResults.map((el) => (
+            <li key={el.id.toString()}>{el.title}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -3,8 +3,8 @@ import { ITodoProps } from "../libs/type";
 
 function Todo({ todo, setTodo }: ITodoProps) {
   const deleteTodo = (id: Date) => {
-    const filterData = todo.filter((el) => el.id !== id);
-    setTodo(filterData);
+    const nextTodo = TodoController(todo).delete(id).get();
+    setTodo(nextTodo);
   };
 
   return (

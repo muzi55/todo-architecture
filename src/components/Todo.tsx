@@ -6,7 +6,6 @@ function Todo({ todo, setTodo }: ITodoProps) {
     const nextTodo = TodoController(todo).delete(id).get();
     setTodo(nextTodo);
   };
-
   return (
     <ul>
       {TodoController(todo)
